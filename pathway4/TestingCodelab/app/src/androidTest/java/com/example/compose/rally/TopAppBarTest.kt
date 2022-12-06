@@ -28,4 +28,20 @@ class TopAppBarTest {
             .assertIsSelected()
     }
 
+    @Test
+    fun rallyTopAppBarTest_currentLabelExists() {
+        val allScreens = RallyScreen.values().toList()
+        composeTestRule.setContent {
+            RallyTopAppBar(
+                allScreens = allScreens,
+                onTabSelected = { },
+                currentScreen = RallyScreen.Accounts
+            )
+        }
+
+        composeTestRule
+            .onNodeWithContentDescription(RallyScreen.Accounts.name)
+            .assertExists()
+    }
+
 }
